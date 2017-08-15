@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/action_myanmar_title"
+        android:title="@string/menu_navigation_myanmar_title"
+        android:icon="@drawable/ic_myanmar" />
+
+    <item android:id="@+id/action_imdb"
+        android:title="@string/menu_navigation_imdb"
+        android:icon="@drawable/ic_imdb" />
+
+    <item android:id="@+id/action_english_title"
+        android:title="@string/menu_navigation_english_title"
+        android:icon="@drawable/ic_english" />
+
+    <item android:id="@+id/action_abouts"
+        android:title="@string/menu_navigation_about"
+        android:icon="@drawable/ic_abouts" />
+
+</menu>

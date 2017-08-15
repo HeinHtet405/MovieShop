@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">MovieShop</string>
+
+    <!-- Label -->
+    <string name="menu_navigation_myanmar_title">Myanmar</string>
+    <string name="menu_navigation_imdb">IMDB</string>
+    <string name="menu_navigation_english_title">English</string>
+    <string name="menu_navigation_about">Abouts</string>
+
+    <string name="sample_text_one">Myanmar</string>
+    <string name="sample_text_two">IMDB</string>
+    <string name="sample_text_three">English</string>
+    <string name="sample_text_four">About</string>
+
+    <!-- Navigation Drawer -->
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
+</resources>
