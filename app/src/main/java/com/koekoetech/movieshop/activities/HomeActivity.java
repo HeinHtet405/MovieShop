@@ -1,4 +1,4 @@
-package com.koekoetech.movieshop;
+package com.koekoetech.movieshop.activities;
 
 import android.app.FragmentTransaction;
 import android.os.Bundle;
@@ -11,6 +11,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.koekoetech.movieshop.R;
+import com.koekoetech.movieshop.fragments.FragmentAbouts;
+import com.koekoetech.movieshop.fragments.FragmentEnglishTitleMovie;
+import com.koekoetech.movieshop.fragments.FragmentIMDBMovie;
+import com.koekoetech.movieshop.fragments.FragmentMyanmarTitleMovie;
 
 public class HomeActivity extends AppCompatActivity {
 
