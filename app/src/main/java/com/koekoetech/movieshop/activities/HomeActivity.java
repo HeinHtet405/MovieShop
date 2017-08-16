@@ -59,7 +59,7 @@ public class HomeActivity extends AppCompatActivity {
         onClickCartMovie();
 
         cartRecyclerView = (RecyclerView) findViewById(R.id.cartRecyclerView);
-        cartItemAdapter = new CartItemAdapter(getApplicationContext(),cartItemList);
+        cartItemAdapter = new CartItemAdapter(getApplicationContext(), cartItemList);
         cartRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         cartRecyclerView.setItemAnimator(new DefaultItemAnimator());
         cartRecyclerView.setAdapter(cartItemAdapter);
@@ -70,7 +70,7 @@ public class HomeActivity extends AppCompatActivity {
                 super.onScrolled(recyclerView, dx, dy);
                 if (dy > 0) {
                     mainTotalAmount.setVisibility(View.GONE);
-                }else {
+                } else {
                     mainTotalAmount.setVisibility(View.VISIBLE);
                 }
             }
@@ -79,26 +79,26 @@ public class HomeActivity extends AppCompatActivity {
         prepareCartData();
     }
 
-    private void prepareCartData(){
-        CartItem one = new CartItem("https://i.pinimg.com/originals/28/89/9e/28899ebf1d1d899f78aaa656894d9781.jpg","The Shawshank Redemption","(English)","100Ks");
+    private void prepareCartData() {
+        CartItem one = new CartItem("https://i.pinimg.com/originals/28/89/9e/28899ebf1d1d899f78aaa656894d9781.jpg", "The Shawshank Redemption", "(English)", "100Ks");
         cartItemList.add(one);
 
-        CartItem two = new CartItem("https://i.pinimg.com/originals/28/89/9e/28899ebf1d1d899f78aaa656894d9781.jpg","God Father (1 to 3)","(မြန်မာစာတန်းထိုး)","100Ks");
+        CartItem two = new CartItem("https://i.pinimg.com/originals/28/89/9e/28899ebf1d1d899f78aaa656894d9781.jpg", "God Father (1 to 3)", "(မြန်မာစာတန်းထိုး)", "100Ks");
         cartItemList.add(two);
 
-        CartItem three = new CartItem("https://i.pinimg.com/originals/28/89/9e/28899ebf1d1d899f78aaa656894d9781.jpg","God Father (1 to 3)","(မြန်မာစာတန်းထိုး)","100Ks");
+        CartItem three = new CartItem("https://i.pinimg.com/originals/28/89/9e/28899ebf1d1d899f78aaa656894d9781.jpg", "God Father (1 to 3)", "(မြန်မာစာတန်းထိုး)", "100Ks");
         cartItemList.add(three);
 
-        CartItem four = new CartItem("https://i.pinimg.com/originals/28/89/9e/28899ebf1d1d899f78aaa656894d9781.jpg","God Father (1 to 3)","(မြန်မာစာတန်းထိုး)","100Ks");
+        CartItem four = new CartItem("https://i.pinimg.com/originals/28/89/9e/28899ebf1d1d899f78aaa656894d9781.jpg", "God Father (1 to 3)", "(မြန်မာစာတန်းထိုး)", "100Ks");
         cartItemList.add(four);
 
-        CartItem five = new CartItem("https://i.pinimg.com/originals/28/89/9e/28899ebf1d1d899f78aaa656894d9781.jpg","God Father (1 to 3)","(မြန်မာစာတန်းထိုး)","100Ks");
+        CartItem five = new CartItem("https://i.pinimg.com/originals/28/89/9e/28899ebf1d1d899f78aaa656894d9781.jpg", "God Father (1 to 3)", "(မြန်မာစာတန်းထိုး)", "100Ks");
         cartItemList.add(five);
 
-        CartItem six = new CartItem("https://i.pinimg.com/originals/28/89/9e/28899ebf1d1d899f78aaa656894d9781.jpg","God Father (1 to 3)","(မြန်မာစာတန်းထိုး)","100Ks");
+        CartItem six = new CartItem("https://i.pinimg.com/originals/28/89/9e/28899ebf1d1d899f78aaa656894d9781.jpg", "God Father (1 to 3)", "(မြန်မာစာတန်းထိုး)", "100Ks");
         cartItemList.add(six);
 
-        CartItem seven = new CartItem("https://i.pinimg.com/originals/28/89/9e/28899ebf1d1d899f78aaa656894d9781.jpg","God Father","(မြန်မာစာတန်းထိုး)","100Ks");
+        CartItem seven = new CartItem("https://i.pinimg.com/originals/28/89/9e/28899ebf1d1d899f78aaa656894d9781.jpg", "God Father", "(မြန်မာစာတန်းထိုး)", "100Ks");
         cartItemList.add(seven);
 
         cartItemAdapter.notifyDataSetChanged();

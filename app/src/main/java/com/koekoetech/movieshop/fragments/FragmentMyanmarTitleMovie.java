@@ -1,6 +1,7 @@
 package com.koekoetech.movieshop.fragments;
 
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -23,13 +24,14 @@ import java.util.List;
  * Created by Hein Htet on 8/15/2017.
  **/
 
-public class FragmentMyanmarTitleMovie extends Fragment {
+public class FragmentMyanmarTitleMovie extends Fragment implements CategoryAdapter.CategoryItemClickable, MovieAdapter.MovieItemClickable {
 
     private List<Category> categoryList = new ArrayList<>();
     private List<Movie> movieList = new ArrayList<>();
     private RecyclerView categoryRecyclerView,movieRecyclerView;
     private CategoryAdapter categoryAdapter;
     private MovieAdapter movieAdapter;
+
 
     public static FragmentMyanmarTitleMovie newInstance() {
         return new FragmentMyanmarTitleMovie();
@@ -54,6 +56,8 @@ public class FragmentMyanmarTitleMovie extends Fragment {
         categoryRecyclerView.setItemAnimator(new DefaultItemAnimator());
         categoryRecyclerView.setAdapter(categoryAdapter);
         movieRecyclerView.setAdapter(movieAdapter);
+        categoryAdapter.setListener(this);
+        movieAdapter.setListener(this);
 
         prepareCategoryData();
         prepareMoviesData();
@@ -128,5 +132,21 @@ public class FragmentMyanmarTitleMovie extends Fragment {
         movieList.add(thirteen);
 
         movieAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void categoryItemClickListener() {
+        FragmentMovieList fragment = FragmentMovieList.newInstance();
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_frame, fragment);
+        ft.commit();
+    }
+
+    @Override
+    public void movieItemClickListener() {
+        FragmentMovieDetail fragment = FragmentMovieDetail.newInstance();
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_frame, fragment);
+        ft.commit();
     }
 }

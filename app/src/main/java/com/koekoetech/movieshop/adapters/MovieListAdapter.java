@@ -15,16 +15,16 @@ import com.koekoetech.movieshop.model.Movie;
 import java.util.List;
 
 /**
- * Created by Hein Htet on 8/15/2017.
+ * Created by Hein Htet on 8/16/2017.
  **/
 
-public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> {
+public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyViewHolder> {
 
     private List<Movie> moviesList;
     private Context context;
-    private MovieItemClickable listener;
+    private MovieListItemClickable listener;
 
-    public MovieAdapter(Context context,List<Movie> moviesList) {
+    public MovieListAdapter(Context context,List<Movie> moviesList) {
         this.context = context;
         this.moviesList = moviesList;
     }
@@ -38,26 +38,26 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.movieItemClickListener();
+                    listener.movieListItemClickListener();
                 }
             });
         }
     }
 
-    public void setListener(MovieItemClickable listener) {
+    public void setListener(MovieListItemClickable listener) {
         this.listener = listener;
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MovieListAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recycler_movie_item, parent, false);
 
-        return new MyViewHolder(itemView);
+        return new MovieListAdapter.MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MovieListAdapter.MyViewHolder holder, int position) {
         Movie movie = moviesList.get(position);
         Glide.with(context)
                 .load(movie.getImageUrl())
@@ -70,8 +70,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
         return moviesList.size();
     }
 
-    public interface MovieItemClickable {
-        void movieItemClickListener();
+    public interface MovieListItemClickable {
+        void movieListItemClickListener();
     }
 
 }

@@ -11,6 +11,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@android:color/white"
         android:background="@drawable/round_background"
+        android:textSize="14sp"
         android:padding="2dp"/>
 
 </RelativeLayout>

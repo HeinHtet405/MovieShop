@@ -1,6 +1,7 @@
 package com.koekoetech.movieshop.fragments;
 
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -23,7 +24,7 @@ import java.util.List;
  * Created by Hein Htet on 8/15/2017.
  **/
 
-public class FragmentEnglishTitleMovie extends Fragment {
+public class FragmentEnglishTitleMovie extends Fragment implements CategoryAdapter.CategoryItemClickable, MovieAdapter.MovieItemClickable {
 
     private List<Category> categoryList = new ArrayList<>();
     private List<Movie> movieList = new ArrayList<>();
@@ -54,6 +55,8 @@ public class FragmentEnglishTitleMovie extends Fragment {
         alphabetRecyclerView.setItemAnimator(new DefaultItemAnimator());
         alphabetRecyclerView.setAdapter(categoryAdapter);
         englishMovieRecyclerView.setAdapter(movieAdapter);
+        categoryAdapter.setListener(this);
+        movieAdapter.setListener(this);
 
         prepareAlphabetData();
         prepareEnglishMoviesData();
@@ -128,5 +131,21 @@ public class FragmentEnglishTitleMovie extends Fragment {
         movieList.add(thirteen);
 
         movieAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void categoryItemClickListener() {
+        FragmentMovieList fragment = FragmentMovieList.newInstance();
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_frame, fragment);
+        ft.commit();
+    }
+
+    @Override
+    public void movieItemClickListener() {
+        FragmentMovieDetail fragment = FragmentMovieDetail.newInstance();
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_frame, fragment);
+        ft.commit();
     }
 }

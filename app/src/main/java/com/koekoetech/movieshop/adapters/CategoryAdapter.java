@@ -18,6 +18,7 @@ import java.util.List;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyViewHolder> {
 
     private List<Category> categoryList;
+    private CategoryItemClickable listener;
 
     public CategoryAdapter(List<Category> moviesList) {
         this.categoryList = moviesList;
@@ -29,6 +30,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
                 .inflate(R.layout.recycler_category_item, parent, false);
 
         return new CategoryAdapter.MyViewHolder(itemView);
+    }
+
+    public void setListener(CategoryItemClickable listener) {
+        this.listener = listener;
     }
 
     @Override
@@ -48,7 +53,17 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
         public MyViewHolder(View view) {
             super(view);
             itemCategoryName = (Button) view.findViewById(R.id.category_name);
+            itemCategoryName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.categoryItemClickListener();
+                }
+            });
         }
+    }
+
+    public interface CategoryItemClickable {
+        void categoryItemClickListener();
     }
 
 }
