@@ -17,6 +17,13 @@ public class CartItem implements Parcelable {
     public CartItem() {
     }
 
+    public CartItem(String imageUrl, String movieName, String movieSubtitle, String moviePrice) {
+        this.imageUrl = imageUrl;
+        this.movieName = movieName;
+        this.movieSubtitle = movieSubtitle;
+        this.moviePrice = moviePrice;
+    }
+
     protected CartItem(Parcel in) {
         imageUrl = in.readString();
         movieName = in.readString();

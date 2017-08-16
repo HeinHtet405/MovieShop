@@ -22,15 +22,30 @@
             android:textStyle="bold"
             android:textColor="@color/colorPrimaryText"/>
 
-        <ImageView
-            android:id="@+id/movieCart"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/ic_cart"
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"/>
+            android:layout_alignParentEnd="true">
+
+            <ImageView
+                android:id="@+id/movieCart"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_cart"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/circle_violet"
+                android:padding="6dp"
+                android:textColor="@color/colorPrimaryText"
+                android:layout_gravity="center"
+                android:text="7"/>
+
+        </FrameLayout>
 
     </RelativeLayout>
 

@@ -1,11 +1,15 @@
 package com.koekoetech.movieshop.adapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.koekoetech.movieshop.R;
 import com.koekoetech.movieshop.model.Movie;
 
@@ -18,6 +22,12 @@ import java.util.List;
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> {
 
     private List<Movie> moviesList;
+    private Context context;
+
+    public MovieAdapter(Context context,List<Movie> moviesList) {
+        this.context = context;
+        this.moviesList = moviesList;
+    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageView;
@@ -26,11 +36,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
             super(view);
             imageView = (ImageView) view.findViewById(R.id.item_movie_poster);
         }
-    }
-
-
-    public MovieAdapter(List<Movie> moviesList) {
-        this.moviesList = moviesList;
     }
 
     @Override
@@ -44,6 +49,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Movie movie = moviesList.get(position);
+        Log.i("Hein", "onBindViewHolder: " + movie.getImageUrl());
+        Glide.with(context)
+                .load(movie.getImageUrl())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(holder.imageView);
     }
 
     @Override

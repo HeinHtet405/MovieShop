@@ -14,6 +14,10 @@ public class Movie implements Parcelable {
     public Movie() {
     }
 
+    public Movie(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     protected Movie(Parcel in) {
         imageUrl = in.readString();
     }

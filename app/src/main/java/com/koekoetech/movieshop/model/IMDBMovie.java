@@ -18,6 +18,14 @@ public class IMDBMovie implements Parcelable{
     public IMDBMovie() {
     }
 
+    public IMDBMovie(int countNumber, String movieName, String movieSubtitle, String movieRating, String imageUrl) {
+        this.countNumber = countNumber;
+        this.movieName = movieName;
+        this.movieSubtitle = movieSubtitle;
+        this.movieRating = movieRating;
+        this.imageUrl = imageUrl;
+    }
+
     protected IMDBMovie(Parcel in) {
         countNumber = in.readInt();
         movieName = in.readString();

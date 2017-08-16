@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    tools:openDrawer="end">
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:theme="@style/AppTheme.AppBarOverlay">
 
-           <include layout="@layout/shopping_cart_toolbar_scrollable"/>
+            <include layout="@layout/shopping_cart_toolbar_scrollable" />
 
         </android.support.design.widget.AppBarLayout>
 
@@ -32,15 +32,90 @@
             android:layout_gravity="bottom"
             android:background="@android:color/white"
             app:elevation="8dp"
+            app:layout_behavior="com.koekoetech.movieshop.utilies.BottomNavigationBehavior"
+            app:layout_scrollFlags="scroll|enterAlways"
             app:menu="@menu/menu_navigation" />
 
     </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view_right"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:headerLayout="@layout/navigation_header"
-        android:layout_gravity="end" />
+        android:layout_gravity="end">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/cartUpperLayer"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="10dp"
+                        android:text="Shopping Cart"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="18sp" />
+
+                </RelativeLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/cartRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cartUpperLayer" />
+
+                <RelativeLayout
+                    android:id="@+id/mainTotalAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/colorAccent"
+                    android:padding="8dp">
+
+                    <RelativeLayout
+                        android:id="@+id/totalPriceLayer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total"
+                            android:textColor="@color/colorPrimaryText" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:text="700 Ks"
+                            android:textColor="@color/colorPrimaryText" />
+
+                    </RelativeLayout>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/totalPriceLayer"
+                        android:background="@drawable/round_background"
+                        android:text="Send to Messenger"
+                        android:textColor="@color/colorPrimaryText" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+    </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>
