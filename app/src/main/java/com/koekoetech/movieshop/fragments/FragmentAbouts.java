@@ -2,6 +2,7 @@ package com.koekoetech.movieshop.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +15,23 @@ import com.koekoetech.movieshop.R;
 
 public class FragmentAbouts extends Fragment {
 
-    public static FragmentAbouts newInstance() {
-        return new FragmentAbouts();
+    public static final String ARG_PARAM1 = "param1";
+
+    public static FragmentAbouts newInstance(String param1) {
+        FragmentAbouts fragmentAbouts = new FragmentAbouts();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        fragmentAbouts.setArguments(args);
+        return fragmentAbouts;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            String param1 = getArguments().getString(ARG_PARAM1);
+            Log.i("Hein", "onCreate: "+ param1);
+        }
     }
 
     @Override

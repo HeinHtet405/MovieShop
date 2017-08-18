@@ -5,6 +5,7 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,12 +24,26 @@ import java.util.List;
 
 public class FragmentMovieList extends Fragment implements MovieListAdapter.MovieListItemClickable {
 
+    public static final String ARG_PARAM1 = "param1";
     private List<Movie> movieList = new ArrayList<>();
     private RecyclerView movieListRecyclerView;
     private MovieListAdapter movieListAdapter;
 
-    public static FragmentMovieList newInstance() {
-        return new FragmentMovieList();
+    public static FragmentMovieList newInstance(String param1) {
+        FragmentMovieList fragmentMovieList = new FragmentMovieList();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        fragmentMovieList.setArguments(args);
+        return fragmentMovieList;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            String param1 = getArguments().getString(ARG_PARAM1);
+            Log.i("Hein", "onCreate: " + param1);
+        }
     }
 
     @Override
@@ -36,7 +51,7 @@ public class FragmentMovieList extends Fragment implements MovieListAdapter.Movi
         View rootView = inflater.inflate(R.layout.fragment_movie_list, container, false);
 
         movieListRecyclerView = (RecyclerView) rootView.findViewById(R.id.movieListRecyclerView);
-        movieListAdapter = new MovieListAdapter(getActivity(),movieList);
+        movieListAdapter = new MovieListAdapter(getActivity(), movieList);
         movieListRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         movieListRecyclerView.setAdapter(movieListAdapter);
         movieListAdapter.setListener(this);
@@ -117,9 +132,9 @@ public class FragmentMovieList extends Fragment implements MovieListAdapter.Movi
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
 
-                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
 
-                    FragmentMyanmarTitleMovie fragment = FragmentMyanmarTitleMovie.newInstance();
+                    FragmentMyanmarTitleMovie fragment = FragmentMyanmarTitleMovie.newInstance("");
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
                     ft.replace(R.id.fragment_frame, fragment);
                     ft.commit();
@@ -135,7 +150,7 @@ public class FragmentMovieList extends Fragment implements MovieListAdapter.Movi
 
     @Override
     public void movieListItemClickListener() {
-        FragmentMovieDetail fragment = FragmentMovieDetail.newInstance();
+        FragmentMovieDetail fragment = FragmentMovieDetail.newInstance("FragmentMovieList");
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_frame, fragment);
         ft.commit();

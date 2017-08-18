@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/cartImage"
         android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_height="105dp"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
         android:scaleType="fitXY"
@@ -18,65 +18,39 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="4dp">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|end"
-            android:padding="4dp"
-            android:src="@drawable/ic_cancel_black_24dp" />
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_cancel_black_24dp"/>
 
         <TextView
             android:id="@+id/cartMovieName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="4dp"
-            android:text="The Shawshank Redemption (1994)"
+            android:padding="2dp"
+            android:text="The Shawshank Redemption"
             android:textColor="@color/colorSecondaryText"
-            android:textSize="15sp"
-            android:theme="@style/RatingBar" />
+            android:textSize="14sp"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/cartMoviePrice"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp">
+            android:padding="2dp"
+            android:text="100 Ks"
+            android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/cartSubtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="6dp"
-                android:text="(Myanmar Subtitle)"
-                android:textSize="12sp" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/money" />
-
-                <TextView
-                    android:id="@+id/cartMoviePrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:padding="6dp"
-                    android:text="100 Ks"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
-
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/cartSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:text="(Myanmar Subtitle)"
+            android:textSize="12sp" />
 
     </LinearLayout>
 

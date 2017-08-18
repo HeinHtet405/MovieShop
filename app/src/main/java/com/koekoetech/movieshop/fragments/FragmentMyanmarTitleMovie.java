@@ -7,6 +7,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,9 +33,23 @@ public class FragmentMyanmarTitleMovie extends Fragment implements CategoryAdapt
     private CategoryAdapter categoryAdapter;
     private MovieAdapter movieAdapter;
 
+    public static final String ARG_PARAM1 = "param1";
 
-    public static FragmentMyanmarTitleMovie newInstance() {
-        return new FragmentMyanmarTitleMovie();
+    public static FragmentMyanmarTitleMovie newInstance(String param1) {
+        FragmentMyanmarTitleMovie fragmentMyanmarTitleMovie = new FragmentMyanmarTitleMovie();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        fragmentMyanmarTitleMovie.setArguments(args);
+        return fragmentMyanmarTitleMovie;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            String param1 = getArguments().getString(ARG_PARAM1);
+            Log.i("Hein", "onCreate: "+ param1);
+        }
     }
 
     @Override
@@ -92,10 +107,10 @@ public class FragmentMyanmarTitleMovie extends Fragment implements CategoryAdapt
 
     private void prepareMoviesData() {
 
-        Movie one = new Movie("http://gdj.graphicdesignjunction.com/wp-content/uploads/2011/12/grey-movie-poster.jpg");
+        Movie one = new Movie("https://i.pinimg.com/736x/77/da/b5/77dab5d1d289d7e1054a89b3149554f0--alfie-allen-movieposter.jpg");
         movieList.add(one);
 
-        Movie two = new Movie("https://i.pinimg.com/originals/28/89/9e/28899ebf1d1d899f78aaa656894d9781.jpg");
+        Movie two = new Movie("http://www.fatmovieguy.com/wp-content/uploads/2013/05/Snitch-Movie-Poster.jpg");
         movieList.add(two);
 
         Movie three = new Movie("https://s-media-cache-ak0.pinimg.com/originals/6c/35/67/6c35676d384779f3499f06aa3061af35.jpg");
@@ -136,7 +151,7 @@ public class FragmentMyanmarTitleMovie extends Fragment implements CategoryAdapt
 
     @Override
     public void categoryItemClickListener() {
-        FragmentMovieList fragment = FragmentMovieList.newInstance();
+        FragmentMovieList fragment = FragmentMovieList.newInstance("FragmentMyanmarTitle");
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_frame, fragment);
         ft.commit();
@@ -144,7 +159,7 @@ public class FragmentMyanmarTitleMovie extends Fragment implements CategoryAdapt
 
     @Override
     public void movieItemClickListener() {
-        FragmentMovieDetail fragment = FragmentMovieDetail.newInstance();
+        FragmentMovieDetail fragment = FragmentMovieDetail.newInstance("FragmentMyanmarTitle");
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_frame, fragment);
         ft.commit();

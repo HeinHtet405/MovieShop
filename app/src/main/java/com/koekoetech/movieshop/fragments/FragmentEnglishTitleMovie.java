@@ -7,6 +7,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,8 +33,23 @@ public class FragmentEnglishTitleMovie extends Fragment implements CategoryAdapt
     private CategoryAdapter categoryAdapter;
     private MovieAdapter movieAdapter;
 
-    public static FragmentEnglishTitleMovie newInstance() {
-        return new FragmentEnglishTitleMovie();
+    public static final String ARG_PARAM1 = "param1";
+
+    public static FragmentEnglishTitleMovie newInstance(String param1) {
+        FragmentEnglishTitleMovie fragmentEnglishTitleMovie = new FragmentEnglishTitleMovie();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        fragmentEnglishTitleMovie.setArguments(args);
+        return fragmentEnglishTitleMovie;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            String param1 = getArguments().getString(ARG_PARAM1);
+            Log.i("Hein", "onCreate: "+ param1);
+        }
     }
 
     @Override
@@ -135,7 +151,7 @@ public class FragmentEnglishTitleMovie extends Fragment implements CategoryAdapt
 
     @Override
     public void categoryItemClickListener() {
-        FragmentMovieList fragment = FragmentMovieList.newInstance();
+        FragmentMovieList fragment = FragmentMovieList.newInstance("FragmentEnglishTitle");
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_frame, fragment);
         ft.commit();
@@ -143,7 +159,7 @@ public class FragmentEnglishTitleMovie extends Fragment implements CategoryAdapt
 
     @Override
     public void movieItemClickListener() {
-        FragmentMovieDetail fragment = FragmentMovieDetail.newInstance();
+        FragmentMovieDetail fragment = FragmentMovieDetail.newInstance("FragmentEnglishTitle");
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_frame, fragment);
         ft.commit();

@@ -1,10 +1,12 @@
 package com.koekoetech.movieshop.fragments;
 
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,14 +22,29 @@ import java.util.List;
  * Created by Hein Htet on 8/15/2017.
  **/
 
-public class FragmentIMDBMovie extends Fragment {
+public class FragmentIMDBMovie extends Fragment implements IMDBMovieAdapter.IMDBMovieListItemClickable {
 
     private List<IMDBMovie> imdbMovieList = new ArrayList<>();
     private RecyclerView imdbRecyclerView;
     private IMDBMovieAdapter imdbMovieAdapter;
 
-    public static FragmentIMDBMovie newInstance() {
-        return new FragmentIMDBMovie();
+    public static final String ARG_PARAM1 = "param1";
+
+    public static FragmentIMDBMovie newInstance(String param1) {
+        FragmentIMDBMovie fragmentIMDBMovie = new FragmentIMDBMovie();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        fragmentIMDBMovie.setArguments(args);
+        return fragmentIMDBMovie;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            String param1 = getArguments().getString(ARG_PARAM1);
+            Log.i("Hein", "onCreate: "+ param1);
+        }
     }
 
     @Override
@@ -40,6 +57,7 @@ public class FragmentIMDBMovie extends Fragment {
         imdbRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         imdbRecyclerView.setItemAnimator(new DefaultItemAnimator());
         imdbRecyclerView.setAdapter(imdbMovieAdapter);
+        imdbMovieAdapter.setListener(this);
 
         prepareIMDBData();
 
@@ -69,5 +87,13 @@ public class FragmentIMDBMovie extends Fragment {
         imdbMovieList.add(seven);
 
         imdbMovieAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void imdbMovieistItemClickListener() {
+        FragmentMovieDetail fragment = FragmentMovieDetail.newInstance("FragmentIMDBMovie");
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_frame, fragment);
+        ft.commit();
     }
 }

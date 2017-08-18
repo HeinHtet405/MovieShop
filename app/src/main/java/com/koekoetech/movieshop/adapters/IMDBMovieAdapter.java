@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -23,6 +24,7 @@ public class IMDBMovieAdapter extends RecyclerView.Adapter<IMDBMovieAdapter.MyVi
 
     private List<IMDBMovie> imdbMovieList;
     private Context context;
+    private IMDBMovieListItemClickable listener;
 
     public IMDBMovieAdapter(Context context, List<IMDBMovie> imdbMovieList) {
         this.context = context;
@@ -35,6 +37,10 @@ public class IMDBMovieAdapter extends RecyclerView.Adapter<IMDBMovieAdapter.MyVi
                 .inflate(R.layout.recycler_imdb_item, parent, false);
 
         return new IMDBMovieAdapter.MyViewHolder(itemView);
+    }
+
+    public void setListener(IMDBMovieListItemClickable listener) {
+        this.listener = listener;
     }
 
     @Override
@@ -58,15 +64,28 @@ public class IMDBMovieAdapter extends RecyclerView.Adapter<IMDBMovieAdapter.MyVi
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private ImageView imageView;
         private TextView itemNumber, itemTitle, itemSubtitle, itemRating;
+        private LinearLayout itemMainLayout;
 
         public MyViewHolder(View view) {
             super(view);
+            itemMainLayout = (LinearLayout) view.findViewById(R.id.itemMainLayout);
             imageView = (ImageView) view.findViewById(R.id.itemImage);
             itemNumber = (TextView) view.findViewById(R.id.itemNumber);
             itemTitle = (TextView) view.findViewById(R.id.itemTitle);
             itemSubtitle = (TextView) view.findViewById(R.id.itemSubtitle);
             itemRating = (TextView) view.findViewById(R.id.itemRating);
+
+            itemMainLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.imdbMovieistItemClickListener();
+                }
+            });
         }
+    }
+
+    public interface IMDBMovieListItemClickable {
+        void imdbMovieistItemClickListener();
     }
 
 }

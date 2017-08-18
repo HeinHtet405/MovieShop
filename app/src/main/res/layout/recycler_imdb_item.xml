@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:id="@+id/itemMainLayout"
     android:background="@color/colorPrimaryText">
 
     <RelativeLayout
@@ -13,7 +14,7 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
-            android:background="@color/colorAccent" />
+            android:background="@color/colorDivider" />
 
         <TextView
             android:id="@+id/itemNumber"
@@ -34,10 +35,10 @@
         android:id="@+id/itemImage"
         android:layout_width="100dp"
         android:layout_height="120dp"
-        android:scaleType="fitXY"
-        android:paddingTop="2dp"
         android:paddingBottom="2dp"
-        android:src="@drawable/mac_cover_one"/>
+        android:paddingTop="2dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/mac_cover_one" />
 
 
     <LinearLayout
@@ -45,6 +46,8 @@
         android:layout_height="match_parent"
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -52,18 +55,16 @@
             android:id="@+id/itemTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:padding="4dp"
             android:text="The Shawshank Redemption (1994)"
             android:textColor="@color/colorSecondaryText"
-            android:textSize="15sp"/>
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:padding="2dp"
-            android:text="Can Buy"
+            android:text="100Ks"
             android:textSize="12sp"
             android:textColor="@color/colorPrimary"/>
 

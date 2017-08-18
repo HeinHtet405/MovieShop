@@ -142,7 +142,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void loadMyanmarTitleMovieFragment() {
 
-        FragmentMyanmarTitleMovie fragment = FragmentMyanmarTitleMovie.newInstance();
+        FragmentMyanmarTitleMovie fragment = FragmentMyanmarTitleMovie.newInstance("HomeActivity");
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_frame, fragment);
         ft.commit();
@@ -150,7 +150,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void loadIMDBMovieFragment() {
 
-        FragmentIMDBMovie fragment = FragmentIMDBMovie.newInstance();
+        FragmentIMDBMovie fragment = FragmentIMDBMovie.newInstance("HomeActivity");
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_frame, fragment);
         ft.commit();
@@ -158,14 +158,14 @@ public class HomeActivity extends AppCompatActivity {
 
     private void loadEnglishTitleMovieFragment() {
 
-        FragmentEnglishTitleMovie fragment = FragmentEnglishTitleMovie.newInstance();
+        FragmentEnglishTitleMovie fragment = FragmentEnglishTitleMovie.newInstance("HomeActivity");
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_frame, fragment);
         ft.commit();
     }
 
     private void loadAboutsFragment() {
-        FragmentAbouts fragment = FragmentAbouts.newInstance();
+        FragmentAbouts fragment = FragmentAbouts.newInstance("HomeActivity");
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_frame, fragment);
         ft.commit();
